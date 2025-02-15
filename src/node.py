@@ -26,7 +26,7 @@ def insert(root: Node, search_key: int) -> Node:
     return root
 
 # Gets the successor of a deleted node.
-def get_successor(root: Node):
+def get_successor(root: Node) -> Node:
     root = root.right
 
     while root is not None and root.left is not None:
@@ -35,7 +35,8 @@ def get_successor(root: Node):
     return root
 
 # Deletes a search key from the binary tree.
-def delete(root: Node, search_key: int):
+# TODO: Revise this so that it actually deletes stuff.
+def delete(root: Node, search_key: int) -> Node | None:
     if root:
         if root.search_key < search_key:
             delete(root.right, search_key)
