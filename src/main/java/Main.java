@@ -79,23 +79,10 @@ public class Main {
 
         while (true) {
             switch (promptForOptionSelection(listener)) {
-                // Create a binary search tree with keys from range 1 to 2r - 1.
+                // Create a binary search tree with a root search key of 4.
                 case 1:
-                    System.out.println("\nThe search key you select will reference the root of the tree.");
-                    System.out.println("The range of search keys will be from 1 to 2r - 1, with r being");
-                    System.out.println("the search key of the root node.\n");
-
-                    // The absolute value of the root search key is calculated to prevent arrays from having negative sizes.
-                    int rootSearchKey = promptForSearchKey(listener);
-                    rootSearchKey = Math.abs(rootSearchKey);
-
-                    // The values array is filled up with numbers in the 1 to 2r - 1 range. 
-                    int[] values = new int[2 * rootSearchKey - 1];
-
-                    for (int i = 0; i < values.length; i++) {
-                        values[i] = i + 1;
-                    }
-
+                    int[] values = {1, 2, 3, 4, 5, 6, 7};
+                    
                     tree.root = createBalancedTree(values, 0, values.length - 1);
 
                     break;
@@ -115,7 +102,7 @@ public class Main {
                         tree.root,
                         promptForSearchKey(listener)
                     );
-                    
+
                     break;
 
                 // Print the tree in-order.
