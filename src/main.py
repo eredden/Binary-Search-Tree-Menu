@@ -50,7 +50,7 @@ if __name__ == "__main__":
                 node.insert(root, select_number())
 
             case 3:
-                node.delete(root, select_number())
+                root = node.delete(root, select_number())
 
             case 4:
                 node.inorder(root)

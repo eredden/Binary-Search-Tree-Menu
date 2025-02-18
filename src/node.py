@@ -35,26 +35,25 @@ def get_successor(root: Node) -> Node:
     return root
 
 # Deletes a search key from the binary tree.
-# TODO: Revise this so that it actually deletes stuff.
 def delete(root: Node, search_key: int) -> Node | None:
     if root:
-        if root.search_key < search_key:
-            delete(root.right, search_key)
+        if root.search_key > search_key:
+            root.left = delete(root.left, search_key)
 
-        elif root.search_key > search_key:
-            delete(root.left, search_key)
-
-        elif root.search_key == search_key:
-            if not root.left:
+        elif root.search_key < search_key:
+            root.right = delete(root.right, search_key)
+            
+        else:
+            if root.left is None:
                 return root.right
 
-            if not root.right:
+            if root.right is None:
                 return root.left
 
             successor = get_successor(root)
             root.search_key = successor.search_key
             root.right = delete(root.right, successor.search_key)
-
+        
     return root
 
 # Traverses through a binary tree in-order.
