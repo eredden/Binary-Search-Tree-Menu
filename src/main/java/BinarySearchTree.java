@@ -52,7 +52,7 @@ public class BinarySearchTree {
                 root.left = deleteNode(root.left, searchKey);
             }
 
-            else if (root.searchKey > searchKey) {
+            else if (root.searchKey < searchKey) {
                 root.right = deleteNode(root.right, searchKey);
             }
 
