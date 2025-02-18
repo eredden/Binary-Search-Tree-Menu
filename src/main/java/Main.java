@@ -1,4 +1,4 @@
-// Main.java - Entry-point for the program. Used as a menu for interacting with a binary search tree.
+// Main.java - Entry point for the program. Used as a menu for interacting with a binary search tree.
 // Created on 02/18/2025 by Evan Redden for Computer Science 201: Data Structures and Algorithms.
 
 import java.util.Scanner; // Required for taking in user input.
@@ -65,7 +65,7 @@ public class Main {
             switch (promptForOptionSelection(listener)) {
                 // Create a tree with a root node that has a search key of 4.
                 case 1:
-                    tree.insertNode(tree.root, 4);
+                    tree = new BinarySearchTree(4);
 
                     for (int i = 1; i < 8; i++) {
                         tree.insertNode(tree.root, i);
@@ -82,6 +82,7 @@ public class Main {
                     break;
 
                 // Delete a node from the tree.
+                // TODO: Figure out why the previous input is deleted rather than the current input.
                 case 3:
                     tree.root = tree.deleteNode(
                         tree.root,
@@ -92,21 +93,27 @@ public class Main {
                 // Print the tree in-order.
                 case 4:
                     tree.printTreeInOrder(tree.root);
+              
+                    System.out.println();
                     break;
 
                 // Print the tree pre-order.
                 case 5:
                     tree.printTreePreOrder(tree.root);
+                
+                    System.out.println();
                     break;
 
                 // Print the tree post-order.
                 case 6:
                     tree.printTreePostOrder(tree.root);
+                
+                    System.out.println();
                     break;
 
                 // Exit the program.
                 case 7:
-                    System.out.println("Have a great day!");
+                    System.out.println("Have a great day!\n");
                 
                     listener.close();
                     return;

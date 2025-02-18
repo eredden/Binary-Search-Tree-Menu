@@ -4,25 +4,17 @@
 public class BinarySearchTree {
     public Node root;
 
-    // Empty constructor for the BinarySearchTree class.
+    // Constructors for the BinarySearchTree class.
     public BinarySearchTree() {
         this.root = null;
     }
 
-    // Defines the Node class and a constructor for it.
-    class Node {
-        int searchKey;
-        Node left;
-        Node right;
-  
-        public Node(int searchKey) {
-            this.searchKey = searchKey;
-            this.left = null;
-            this.right = null;
-        }
+    public BinarySearchTree(int rootSearchKey) {
+        this.root = new Node(rootSearchKey);
     }
     
     // Inserts a node into a binary search tree given the root node and a search key.
+    // TODO: Investigate why nodes are being inserted in the wrong order.
     public Node insertNode(Node root, int searchKey) {
         // Insert the node into an empty branch.
         if (root == null) {
