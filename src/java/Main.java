@@ -5,7 +5,7 @@ import java.util.Scanner; // Required for taking in user input.
 
 public class Main {
     // Continously prompt the user to select an option until the user provides a valid integer.
-    public static int promptForOptionSelection() {
+    public static int promptForOptionSelection(Scanner listener) {
         System.out.println("\nBINARY SEARCH TREE INTERFACE:");
         System.out.println("1. Create a binary search tree.");
         System.out.println("2. Add a node.");
@@ -15,18 +15,15 @@ public class Main {
         System.out.println("6. Print nodes post-order.");
         System.out.println("7. Exit the program.\n");
 
-        Scanner listener = new Scanner(System.in);
-
         while (true) {
             try {
-                System.out.print("Select a search key: ");
+                System.out.print("Select an option (1-7): ");
 
                 int selection = Integer.parseInt(
                   listener.nextLine()
                 );
 
                 if (selection > 0 && selection < 8) {
-                  listener.close();
                   return selection;
                 }
             }
@@ -42,9 +39,7 @@ public class Main {
     }
 
     // Continously prompt for a search key (integer) until the user provides a valid integer.
-    public static int promptForSearchKey() {
-        Scanner listener = new Scanner(System.in);
-
+    public static int promptForSearchKey(Scanner listener) {
         while (true) {
             try {
                 System.out.print("Select a search key: ");
@@ -53,7 +48,6 @@ public class Main {
                     listener.nextLine()
                 );
 
-                listener.close();
                 return selection;
             }
 
@@ -64,10 +58,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        Scanner listener = new Scanner(System.in);
         BinarySearchTree tree = new BinarySearchTree();
 
         while (true) {
-            switch (promptForOptionSelection()) {
+            switch (promptForOptionSelection(listener)) {
                 // Create a tree with a root node that has a search key of 4.
                 case 1:
                     tree.insertNode(tree.root, 4);
@@ -82,7 +77,7 @@ public class Main {
                 case 2:
                     tree.insertNode(
                         tree.root,
-                        promptForSearchKey()
+                        promptForSearchKey(listener)
                     );
                     break;
 
@@ -90,7 +85,7 @@ public class Main {
                 case 3:
                     tree.root = tree.deleteNode(
                         tree.root,
-                        promptForSearchKey()
+                        promptForSearchKey(listener)
                     );
                     break;
 
@@ -112,6 +107,8 @@ public class Main {
                 // Exit the program.
                 case 7:
                     System.out.println("Have a great day!");
+                
+                    listener.close();
                     return;
             }
         }
