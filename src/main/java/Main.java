@@ -1,4 +1,4 @@
-// Main.java - Entry point for the program. Used as a menu for interacting with a binary search tree.
+// Main.java - Entry-point for the program. Used as a menu for interacting with a binary search tree.
 // Created on 02/18/2025 by Evan Redden for Computer Science 201: Data Structures and Algorithms.
 
 import java.util.Scanner; // Required for taking in user input.
@@ -67,10 +67,13 @@ public class Main {
                 case 1:
                     tree = new BinarySearchTree(4);
 
-                    for (int i = 1; i < 8; i++) {
-                        tree.insertNode(tree.root, i);
-                    }
-
+                    tree.insertNode(tree.root, 2);
+                    tree.insertNode(tree.root, 6);
+                    tree.insertNode(tree.root, 1);
+                    tree.insertNode(tree.root, 3);
+                    tree.insertNode(tree.root, 5);
+                    tree.insertNode(tree.root, 7);
+                
                     break;
 
                 // Insert a node into the tree.

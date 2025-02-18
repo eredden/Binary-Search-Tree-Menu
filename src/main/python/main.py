@@ -1,6 +1,6 @@
 # main.py - Entry point for interfacing with a binary search tree.
 
-import py.node as node
+import node
 
 # Prompts the user with available options for interacting with the binary search tree.
 def select_options() -> int:
@@ -42,9 +42,13 @@ if __name__ == "__main__":
         match select_options():
             case 1:
                 root = node.Node(4)
-                
-                for iterator in range(1, 8):
-                    node.insert(root, iterator)
+
+                node.insert(root, 2)
+                node.insert(root, 6)
+                node.insert(root, 1)
+                node.insert(root, 3)
+                node.insert(root, 5)
+                node.insert(root, 7)
 
             case 2:
                 node.insert(root, select_number())
