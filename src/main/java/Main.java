@@ -2,6 +2,7 @@
 // Created on 02/18/2025 by Evan Redden for Computer Science 201: Data Structures and Algorithms.
 
 import java.util.Scanner; // Required for taking in user input.
+import java.lang.Math; // abs() required in case users want negative node values.
 
 public class Main {
     // Continously prompt the user to select an option until the user provides a valid integer.
@@ -84,8 +85,11 @@ public class Main {
                     System.out.println("The range of search keys will be from 1 to 2r - 1, with r being");
                     System.out.println("the search key of the root node.\n");
 
-                    
+                    // The absolute value of the root search key is calculated to prevent arrays from having negative sizes.
                     int rootSearchKey = promptForSearchKey(listener);
+                    rootSearchKey = Math.abs(rootSearchKey);
+
+                    // The values array is filled up with numbers in the 1 to 2r - 1 range. 
                     int[] values = new int[2 * rootSearchKey - 1];
 
                     for (int i = 0; i < values.length; i++) {
@@ -102,6 +106,7 @@ public class Main {
                         tree.root,
                         promptForSearchKey(listener)
                     );
+
                     break;
 
                 // Delete a node from the tree.
@@ -110,6 +115,7 @@ public class Main {
                         tree.root,
                         promptForSearchKey(listener)
                     );
+                    
                     break;
 
                 // Print the tree in-order.
