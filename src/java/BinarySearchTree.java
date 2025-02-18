@@ -46,7 +46,7 @@ public class BinarySearchTree {
     private Node getSuccessorNode(Node root) {
         root = root.right;
 
-        while (root && root.left) {
+        while (root != null && root.left != null) {
             root = root.left;
         }
 
@@ -55,7 +55,7 @@ public class BinarySearchTree {
 
     // Deletes a node from a binary search tree given the root node.
     public Node deleteNode(Node root, int searchKey) {
-        if (root) {
+        if (root != null) {
             if (root.searchKey > searchKey) {
                 root.left = deleteNode(root.left, searchKey);
             }
@@ -86,22 +86,29 @@ public class BinarySearchTree {
 
     // Prints an in-order binary search tree.
     public void printTreeInOrder(Node root) {
-        printTreeInOrder(root.left);
-        System.out.print(root.searchKey + " ");
-        printTreeInOrder(root.right);
+        if (root != null) {
+          printTreeInOrder(root.left);
+          System.out.print(root.searchKey + " ");
+          printTreeInOrder(root.right);
+        }      
+        
     }
 
     // Prints a pre-order binary search tree.
     public void printTreePreOrder(Node root) {
-        System.out.print(root.searchKey + " ");
-        printTreePreOrder(root.left);
-        printTreePreOrder(root.right);
+        if (root != null) {
+            System.out.print(root.searchKey + " ");
+            printTreePreOrder(root.left);
+            printTreePreOrder(root.right);
+        }
     }
 
     // Prints a post-order binary search tree.
     public void printTreePostOrder(Node root) {
-        printTreePostOrder(root.left);
-        printTreePostOrder(root.right);
-        System.out.print(root.searchKey + " ");
+        if (root != null) {
+            printTreePostOrder(root.left);
+            printTreePostOrder(root.right);
+            System.out.print(root.searchKey + " ");
+        }
     }
 }
