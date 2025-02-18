@@ -1,4 +1,4 @@
-// BinarySearchTree.java - Defines the Node class and a constructor for it.
+// Node.java - Defines the Node class and a constructor for it.
 // Created on 02/18/2025 by Evan Redden for Computer Science 201: Data Structures and Algorithms.
 
 public class Node {
