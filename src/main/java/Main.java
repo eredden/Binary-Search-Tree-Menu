@@ -2,7 +2,6 @@
 // Created on 02/18/2025 by Evan Redden for Computer Science 201: Data Structures and Algorithms.
 
 import java.util.Scanner; // Required for taking in user input.
-import java.lang.Math; // abs() required in case users want negative node values.
 
 public class Main {
     // Continously prompt the user to select an option until the user provides a valid integer.
@@ -82,7 +81,7 @@ public class Main {
                 // Create a binary search tree with a root search key of 4.
                 case 1:
                     int[] values = {1, 2, 3, 4, 5, 6, 7};
-                    
+
                     tree.root = createBalancedTree(values, 0, values.length - 1);
 
                     break;
