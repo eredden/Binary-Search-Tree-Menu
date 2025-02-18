@@ -57,23 +57,43 @@ public class Main {
         }
     }
 
+    // Create a balanced binary search tree.
+    public static Node createBalancedTree(int[] values, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+
+        int mid = (start + end) / 2;
+        Node node = new Node(values[mid]);
+
+        node.left = createBalancedTree(values, start, mid - 1);
+        node.right = createBalancedTree(values, mid + 1, end);
+
+        return node;
+    }
+
     public static void main(String[] args) {
         Scanner listener = new Scanner(System.in);
         BinarySearchTree tree = new BinarySearchTree();
 
         while (true) {
             switch (promptForOptionSelection(listener)) {
-                // Create a tree with a root node that has a search key of 4.
+                // Create a binary search tree with keys from range 1 to 2r - 1.
                 case 1:
-                    tree = new BinarySearchTree(4);
+                    System.out.println("\nThe search key you select will reference the root of the tree.");
+                    System.out.println("The range of search keys will be from 1 to 2r - 1, with r being");
+                    System.out.println("the search key of the root node.\n");
 
-                    tree.insertNode(tree.root, 2);
-                    tree.insertNode(tree.root, 6);
-                    tree.insertNode(tree.root, 1);
-                    tree.insertNode(tree.root, 3);
-                    tree.insertNode(tree.root, 5);
-                    tree.insertNode(tree.root, 7);
-                
+                    
+                    int rootSearchKey = promptForSearchKey(listener);
+                    int[] values = new int[2 * rootSearchKey - 1];
+
+                    for (int i = 0; i < values.length; i++) {
+                        values[i] = i + 1;
+                    }
+
+                    tree.root = createBalancedTree(values, 0, values.length - 1);
+
                     break;
 
                 // Insert a node into the tree.
@@ -85,7 +105,6 @@ public class Main {
                     break;
 
                 // Delete a node from the tree.
-                // TODO: Figure out why the previous input is deleted rather than the current input.
                 case 3:
                     tree.root = tree.deleteNode(
                         tree.root,
@@ -96,28 +115,28 @@ public class Main {
                 // Print the tree in-order.
                 case 4:
                     tree.printTreeInOrder(tree.root);
-              
+
                     System.out.println();
                     break;
 
                 // Print the tree pre-order.
                 case 5:
                     tree.printTreePreOrder(tree.root);
-                
+
                     System.out.println();
                     break;
 
                 // Print the tree post-order.
                 case 6:
                     tree.printTreePostOrder(tree.root);
-                
+
                     System.out.println();
                     break;
 
                 // Exit the program.
                 case 7:
                     System.out.println("Have a great day!\n");
-                
+
                     listener.close();
                     return;
             }
