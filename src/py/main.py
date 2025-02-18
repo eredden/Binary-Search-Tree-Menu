@@ -1,6 +1,6 @@
 # main.py - Entry point for interfacing with a binary search tree.
 
-import node
+import py.node as node
 
 # Prompts the user with available options for interacting with the binary search tree.
 def select_options() -> int:
